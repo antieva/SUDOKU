@@ -49,18 +49,28 @@ Board.prototype.generate = function(level) {
   while (set < level) {
     col = Math.floor(Math.random() * 8);
     row = Math.floor(Math.random() * 8);
-    num = Math.floor(Math.random() * 8 + 1);
+    num = Math.floor(Math.random() * 9 + 1);
 
     if(!$("input#" + col + row).val()){
       if(this.getSet(num, row, col)) {
         set++;
-        $("input#" + col + row).val(num);
+        $("input#" + col + row).val(num).prop('disabled', true);
       }
     }
   }
 }
 
-
+function timer() {
+var time = 0;
+var minutes = 0;
+setInterval(function(){
+  time = time + 1;
+  if (time == 60){
+    time = 0;
+    minutes = minutes + 1
+  }
+$("#time").text(minutes+":"+time);}, 1000)
+}
 
 // UI logic.
 
@@ -70,15 +80,17 @@ $(document).ready(function(){
   $("#easy").click(function(event){
     event.preventDefault();
     board.generate(35);
-      console.log(board);
+    timer();
   })
   $("#medium").click(function(event){
     event.preventDefault();
     board.generate(31);
+    timer();
   })
   $("#hard").click(function(event){
     event.preventDefault();
     board.generate(28);
+    timer();
   })
 
 
