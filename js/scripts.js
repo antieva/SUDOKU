@@ -22,11 +22,6 @@ Board.prototype.getSet = function(num, row, col) {
 }
 
 
-
-function restart(){
-  renew();
-  timer();
-}
 Board.prototype.toBoxIndex = function(row, col) {
   return Math.floor(row / 3) * 3 + Math.floor(col/3);
 }
@@ -60,9 +55,15 @@ Board.prototype.generate = function(level) {
   }
 }
 
+function restart(){
+  renew();
+  timer();
+}
+
 function timer() {
 var time = 0;
 var minutes = 0;
+clearInterval(time);
 setInterval(function(){
   time = time + 1;
   if (time == 60){
@@ -72,6 +73,16 @@ setInterval(function(){
 $("#time").text(minutes+":"+time);}, 1000)
 }
 
+Board.prototype.refresh = function() {
+  for(var i = 0; i < 9; i++) {
+    for(var j = 0; j < 9; j++){
+      this.rows.pop();
+      $("input#" + j + i).val("").prop( "disabled", false);
+    }
+  }
+};
+
+
 // UI logic.
 
 $(document).ready(function(){
@@ -79,20 +90,32 @@ $(document).ready(function(){
 
   $("#easy").click(function(event){
     event.preventDefault();
+    board.refresh();
+    board = new Board();
     board.generate(35);
     timer();
   })
   $("#medium").click(function(event){
     event.preventDefault();
+    //console.log(board);
+    board.refresh();
+    board = new Board();
     board.generate(31);
+    console.log(board);
     timer();
   })
   $("#hard").click(function(event){
     event.preventDefault();
+    board.refresh();
+    board = new Board();
     board.generate(28);
     timer();
   })
 
+  $("#restart").click(function(event) {
+    event.preventDefault();
+    board.refresh();
+  })
 
   console.log(board);
 
