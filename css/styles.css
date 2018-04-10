@@ -27,3 +27,11 @@ body{
    -o-background-size: cover;
    background-size: cover;
  }
+
+ .preset {
+   color: black;
+ }
+
+ .presetHint {
+   color: blue;
+ }
