@@ -5,6 +5,7 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/script.js"></script>
     <meta charset="utf-8">
     <title>SUDOKU</title>
   </head>
@@ -16,103 +17,103 @@
         <form id="table">
         <table>
           <tr>
-            <td><input id="00"type="text" class = "square" data-col="0" data-row="0"></td>
-            <td><input id="10"type="text" class = "square" data-col="1" data-row="0"></td>
-            <td><input id="20"type="text" class = "square right-border" data-col="2" data-row="0"></td>
-            <td><input id="30"type="text" class = "square" data-col="3" data-row="0"></td>
-            <td><input id="40"type="text" class = "square" data-col="4" data-row="0"></td>
-            <td><input id="50"type="text" class = "square right-border" data-col="5" data-row="0"></td>
-            <td><input id="60"type="text" class = "square" data-col="6" data-row="0"></td>
-            <td><input id="70"type="text" class = "square" data-col="7" data-row="0"></td>
-            <td><input id="80"type="text" class = "square" data-col="8" data-row="0"></td>
+            <td><input id="00"type="text" class = "square box1" data-col="0" data-row="0"></td>
+            <td><input id="10"type="text" class = "square box1" data-col="1" data-row="0"></td>
+            <td><input id="20"type="text" class = "square right-border box1" data-col="2" data-row="0"></td>
+            <td><input id="30"type="text" class = "square box2" data-col="3" data-row="0"></td>
+            <td><input id="40"type="text" class = "square box2" data-col="4" data-row="0"></td>
+            <td><input id="50"type="text" class = "square right-border box2" data-col="5" data-row="0"></td>
+            <td><input id="60"type="text" class = "square box3" data-col="6" data-row="0"></td>
+            <td><input id="70"type="text" class = "square box3" data-col="7" data-row="0"></td>
+            <td><input id="80"type="text" class = "square box3" data-col="8" data-row="0"></td>
           </tr>
           <tr>
-            <td><input id="01" type="text" class = "square" data-col="0" data-row="1"></td>
-            <td><input id="11" type="text" class = "square" data-col="1" data-row="1"></td>
-            <td><input id="21" type="text" class = "square right-border" data-col="2" data-row="1"></td>
-            <td><input id="31" type="text" class = "square" data-col="3" data-row="1"></td>
-            <td><input id="41" type="text" class = "square" data-col="4" data-row="1"></td>
-            <td><input id="51" type="text" class = "square right-border" data-col="5" data-row="1"></td>
-            <td><input id="61" type="text" class = "square" data-col="6" data-row="1"></td>
-            <td><input id="71" type="text" class = "square" data-col="7" data-row="1"></td>
-            <td><input id="81" type="text" class = "square" data-col="8" data-row="1"></td>
+            <td><input id="01" type="text" class = "square box1" data-col="0" data-row="1"></td>
+            <td><input id="11" type="text" class = "square box1" data-col="1" data-row="1"></td>
+            <td><input id="21" type="text" class = "square right-border box1" data-col="2" data-row="1"></td>
+            <td><input id="31" type="text" class = "square box2" data-col="3" data-row="1"></td>
+            <td><input id="41" type="text" class = "square box2" data-col="4" data-row="1"></td>
+            <td><input id="51" type="text" class = "square right-border box2" data-col="5" data-row="1"></td>
+            <td><input id="61" type="text" class = "square box3" data-col="6" data-row="1"></td>
+            <td><input id="71" type="text" class = "square box3" data-col="7" data-row="1"></td>
+            <td><input id="81" type="text" class = "square box3" data-col="8" data-row="1"></td>
           </tr>
           <tr>
-            <td><input id="02" type="text" class = "square bottom-border" data-col="0" data-row="2"></td>
-            <td><input id="12" type="text" class = "square bottom-border" data-col="1" data-row="2"></td>
-            <td><input id="22" type="text" class = "square bottom-border right-border" data-col="2" data-row="2"></td>
-            <td><input id="32" type="text" class = "square bottom-border" data-col="3" data-row="2"></td>
-            <td><input id="42" type="text" class = "square bottom-border" data-col="4" data-row="2"></td>
-            <td><input id="52" type="text" class = "square bottom-border right-border" data-col="5" data-row="2"></td>
-            <td><input id="62" type="text" class = "square bottom-border" data-col="6" data-row="2"></td>
-            <td><input id="72" type="text" class = "square bottom-border" data-col="7" data-row="2"></td>
-            <td><input id="82" type="text" class = "square bottom-border" data-col="8" data-row="2"></td>
+            <td><input id="02" type="text" class = "square bottom-border box1" data-col="0" data-row="2"></td>
+            <td><input id="12" type="text" class = "square bottom-border box1" data-col="1" data-row="2"></td>
+            <td><input id="22" type="text" class = "square bottom-border right-border box1" data-col="2" data-row="2"></td>
+            <td><input id="32" type="text" class = "square bottom-border box2" data-col="3" data-row="2"></td>
+            <td><input id="42" type="text" class = "square bottom-border box2" data-col="4" data-row="2"></td>
+            <td><input id="52" type="text" class = "square bottom-border right-border box2" data-col="5" data-row="2"></td>
+            <td><input id="62" type="text" class = "square bottom-border box3" data-col="6" data-row="2"></td>
+            <td><input id="72" type="text" class = "square bottom-border box3" data-col="7" data-row="2"></td>
+            <td><input id="82" type="text" class = "square bottom-border box3" data-col="8" data-row="2"></td>
           </tr>
           <tr>
-            <td><input id="03" type="text" class = "square" data-col="0" data-row="3"></td>
-            <td><input id="13" type="text" class = "square" data-col="1" data-row="3"></td>
-            <td><input id="23" type="text" class = "square right-border" data-col="2" data-row="3"></td>
-            <td><input id="33" type="text" class = "square" data-col="3" data-row="3"></td>
-            <td><input id="43" type="text" class = "square" data-col="4" data-row="3"></td>
-            <td><input id="53" type="text" class = "square right-border" data-col="5" data-row="3"></td>
-            <td><input id="63" type="text" class = "square" data-col="6" data-row="3"></td>
-            <td><input id="73" type="text" class = "square" data-col="7" data-row="3"></td>
-            <td><input id="83" type="text" class = "square" data-col="8" data-row="3"></td>
+            <td><input id="03" type="text" class = "square box4" data-col="0" data-row="3"></td>
+            <td><input id="13" type="text" class = "square box4" data-col="1" data-row="3"></td>
+            <td><input id="23" type="text" class = "square right-border box4" data-col="2" data-row="3"></td>
+            <td><input id="33" type="text" class = "square box5" data-col="3" data-row="3"></td>
+            <td><input id="43" type="text" class = "square box5" data-col="4" data-row="3"></td>
+            <td><input id="53" type="text" class = "square right-border box5" data-col="5" data-row="3"></td>
+            <td><input id="63" type="text" class = "square box6" data-col="6" data-row="3"></td>
+            <td><input id="73" type="text" class = "square box6" data-col="7" data-row="3"></td>
+            <td><input id="83" type="text" class = "square box6" data-col="8" data-row="3"></td>
           </tr>
           <tr>
-            <td><input id="04" type="text" class = "square" data-col="0" data-row="4"></td>
-            <td><input id="14" type="text" class = "square" data-col="1" data-row="4"></td>
-            <td><input id="24" type="text" class = "square right-border" data-col="2" data-row="4"></td>
-            <td><input id="34" type="text" class = "square" data-col="3" data-row="4"></td>
-            <td><input id="44" type="text" class = "square" data-col="4" data-row="4"></td>
-            <td><input id="54" type="text" class = "square right-border" data-col="5" data-row="4"></td>
-            <td><input id="64" type="text" class = "square" data-col="6" data-row="4"></td>
-            <td><input id="74" type="text" class = "square" data-col="7" data-row="4"></td>
-            <td><input id="84" type="text" class = "square" data-col="8" data-row="4"></td>
+            <td><input id="04" type="text" class = "square box4" data-col="0" data-row="4"></td>
+            <td><input id="14" type="text" class = "square box4" data-col="1" data-row="4"></td>
+            <td><input id="24" type="text" class = "square right-border box4" data-col="2" data-row="4"></td>
+            <td><input id="34" type="text" class = "square box5" data-col="3" data-row="4"></td>
+            <td><input id="44" type="text" class = "square box5" data-col="4" data-row="4"></td>
+            <td><input id="54" type="text" class = "square right-border box5" data-col="5" data-row="4"></td>
+            <td><input id="64" type="text" class = "square box6" data-col="6" data-row="4"></td>
+            <td><input id="74" type="text" class = "square box6" data-col="7" data-row="4"></td>
+            <td><input id="84" type="text" class = "square box6" data-col="8" data-row="4"></td>
           </tr>
           <tr>
-            <td><input id="05" type="text" class = "square bottom-border" data-col="0" data-row="5"></td>
-            <td><input id="15" type="text" class = "square bottom-border" data-col="1" data-row="5"></td>
-            <td><input id="25" type="text" class = "square bottom-border right-border" data-col="2" data-row="5"></td>
-            <td><input id="35" type="text" class = "square bottom-border" data-col="3" data-row="5"></td>
-            <td><input id="45" type="text" class = "square bottom-border" data-col="4" data-row="5"></td>
-            <td><input id="55" type="text" class = "square bottom-border right-border" data-col="5" data-row="5"></td>
-            <td><input id="65" type="text" class = "square bottom-border" data-col="6" data-row="5"></td>
-            <td><input id="75" type="text" class = "square bottom-border" data-col="7" data-row="5"></td>
-            <td><input id="85" type="text" class = "square bottom-border" data-col="8" data-row="5"></td>
+            <td><input id="05" type="text" class = "square bottom-border box4" data-col="0" data-row="5"></td>
+            <td><input id="15" type="text" class = "square bottom-border box4" data-col="1" data-row="5"></td>
+            <td><input id="25" type="text" class = "square bottom-border right-border box4" data-col="2" data-row="5"></td>
+            <td><input id="35" type="text" class = "square bottom-border box5" data-col="3" data-row="5"></td>
+            <td><input id="45" type="text" class = "square bottom-border box5" data-col="4" data-row="5"></td>
+            <td><input id="55" type="text" class = "square bottom-border right-border box5" data-col="5" data-row="5"></td>
+            <td><input id="65" type="text" class = "square bottom-border box6" data-col="6" data-row="5"></td>
+            <td><input id="75" type="text" class = "square bottom-border box6" data-col="7" data-row="5"></td>
+            <td><input id="85" type="text" class = "square bottom-border box6" data-col="8" data-row="5"></td>
           </tr>
           <tr>
-            <td><input id="06" type="text" class = "square" data-col="0" data-row="6"></td>
-            <td><input id="16" type="text" class = "square" data-col="1" data-row="6"></td>
-            <td><input id="26" type="text" class = "square right-border" data-col="2" data-row="6"></td>
-            <td><input id="36" type="text" class = "square" data-col="3" data-row="6"></td>
-            <td><input id="46" type="text" class = "square" data-col="4" data-row="6"></td>
-            <td><input id="56" type="text" class = "square right-border" data-col="5" data-row="6"></td>
-            <td><input id="66" type="text" class = "square" data-col="6" data-row="6"></td>
-            <td><input id="76" type="text" class = "square" data-col="7" data-row="6"></td>
-            <td><input id="86" type="text" class = "square" data-col="8" data-row="6"></td>
+            <td><input id="06" type="text" class = "square box7" data-col="0" data-row="6"></td>
+            <td><input id="16" type="text" class = "square box7" data-col="1" data-row="6"></td>
+            <td><input id="26" type="text" class = "square right-border box7" data-col="2" data-row="6"></td>
+            <td><input id="36" type="text" class = "square box8" data-col="3" data-row="6"></td>
+            <td><input id="46" type="text" class = "square box8" data-col="4" data-row="6"></td>
+            <td><input id="56" type="text" class = "square right-border box8" data-col="5" data-row="6"></td>
+            <td><input id="66" type="text" class = "square box9" data-col="6" data-row="6"></td>
+            <td><input id="76" type="text" class = "square box9" data-col="7" data-row="6"></td>
+            <td><input id="86" type="text" class = "square box9" data-col="8" data-row="6"></td>
           </tr>
           <tr>
-            <td><input id="07" type="text" class = "square" data-col="0" data-row="7"></td>
-            <td><input id="17" type="text" class = "square" data-col="1" data-row="7"></td>
-            <td><input id="27" type="text" class = "square right-border" data-col="2" data-row="7"></td>
-            <td><input id="37" type="text" class = "square" data-col="3" data-row="7"></td>
-            <td><input id="47" type="text" class = "square" data-col="4" data-row="7"></td>
-            <td><input id="57" type="text" class = "square right-border" data-col="5" data-row="7"></td>
-            <td><input id="67" type="text" class = "square" data-col="6" data-row="7"></td>
-            <td><input id="77" type="text" class = "square" data-col="7" data-row="7"></td>
-            <td><input id="87" type="text" class = "square" data-col="8" data-row="7"></td>
+            <td><input id="07" type="text" class = "square box7" data-col="0" data-row="7"></td>
+            <td><input id="17" type="text" class = "square box7" data-col="1" data-row="7"></td>
+            <td><input id="27" type="text" class = "square right-border box7" data-col="2" data-row="7"></td>
+            <td><input id="37" type="text" class = "square box8" data-col="3" data-row="7"></td>
+            <td><input id="47" type="text" class = "square box8" data-col="4" data-row="7"></td>
+            <td><input id="57" type="text" class = "square right-border box8" data-col="5" data-row="7"></td>
+            <td><input id="67" type="text" class = "square box9" data-col="6" data-row="7"></td>
+            <td><input id="77" type="text" class = "square box9" data-col="7" data-row="7"></td>
+            <td><input id="87" type="text" class = "square box9" data-col="8" data-row="7"></td>
           </tr>
           <tr>
-            <td><input id="08" type="text" class = "square" data-col="0" data-row="8"></td>
-            <td><input id="18" type="text" class = "square" data-col="1" data-row="8"></td>
-            <td><input id="28" type="text" class = "square right-border" data-col="2" data-row="8"></td>
-            <td><input id="38" type="text" class = "square" data-col="3" data-row="8"></td>
-            <td><input id="48" type="text" class = "square" data-col="4" data-row="8"></td>
-            <td><input id="58" type="text" class = "square right-border" data-col="5" data-row="8"></td>
-            <td><input id="68" type="text" class = "square" data-col="6" data-row="8"></td>
-            <td><input id="78" type="text" class = "square" data-col="7" data-row="8"></td>
-            <td><input id="88" type="text" class = "square" data-col="8" data-row="8"></td>
+            <td><input id="08" type="text" class = "square box7" data-col="0" data-row="8"></td>
+            <td><input id="18" type="text" class = "square box7" data-col="1" data-row="8"></td>
+            <td><input id="28" type="text" class = "square right-border box7" data-col="2" data-row="8"></td>
+            <td><input id="38" type="text" class = "square box8" data-col="3" data-row="8"></td>
+            <td><input id="48" type="text" class = "square box8" data-col="4" data-row="8"></td>
+            <td><input id="58" type="text" class = "square right-border box8" data-col="5" data-row="8"></td>
+            <td><input id="68" type="text" class = "square box9" data-col="6" data-row="8"></td>
+            <td><input id="78" type="text" class = "square box9" data-col="7" data-row="8"></td>
+            <td><input id="88" type="text" class = "square box9" data-col="8" data-row="8"></td>
           </tr>
 
           </table>
@@ -144,7 +145,6 @@
     </div>
 
       <h2> Rules of sudoku</h2>
-        <p> The Rules of Sudoku</p>
         <p> The classic Sudoku game involves a grid of 81 squares. The grid is divided into
           nine blocks, each containing nine squares.
         <p>The rules of the game are simple: each of the nine blocks has to contain all the numbers
@@ -166,6 +166,37 @@
       }
     $("#time").text(minutes+":"+time);}, 1000)
 }
+
+
+function changeColor(color) {
+    for(var k = 0; k < n; k ++) {
+        elms[k].style.backgroundColor = color;
+
+    }
+}
+var boxarray = ["box1","box2","box3","box4","box5","box6","box7","box8","box9"]
+var boxarray2 = [];
+
+for (var i = 0; i < boxarray.length; i++) {
+var elms = [];
+elms = document.getElementsByClassName(boxarray[i]);
+boxarray2.push(elms);
+
+}
+console.log(boxarray2[0][1]);
+
+for(var j = 0; j < boxarray2.length; j ++) {
+  for (var y = 0; boxarray2[j].length;y++ ){
+
+    boxarray2[j][y].onmouseover = function() {
+        changeColor("orange");
+    };
+    boxarray2[j][y].onmouseout = function() {
+        changeColor("white");
+    };
+}
+}
+
 
 
 

@@ -94,7 +94,7 @@ $(document).ready(function(){
   })
 
 
-  console.log(board);
+  // console.log(board);
 
   /* $("input#" + $target.data("col") + $target.data("row")).val("hey")*/
   $("#table input").keyup(function(e) {

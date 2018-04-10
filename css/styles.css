@@ -8,8 +8,8 @@ input {
 
 }
 button{
-  min-width: 160px;
-  max-width: 160px;
+  min-width: 165px;
+  max-width: 165px;
 
 }
 .preset {
@@ -26,10 +26,13 @@ body {
    margin: 50px;
 
  }
-.tr:hover{
+/*.square:hover{
   background-color: green;
-}
+}*/
 
+/*.box1 {
+  background-color: yellow;
+}*/
 
 #title {
   font-size: 95px;
@@ -45,9 +48,11 @@ border-bottom:2pt solid black;
 border-right:2pt solid black;
 
 }
+
 table {
   overflow: hidden;
 }
+
 
 td, tr {
   padding: 1px;
