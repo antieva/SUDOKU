@@ -26,6 +26,7 @@ body {
    margin: 50px;
 
  }
+
 /*.square:hover{
   background-color: green;
 }*/
@@ -86,3 +87,13 @@ td:focus::after,
 tr:focus::after {
   background-color: lightblue;
 }
+
+
+ .preset {
+   color: black;
+ }
+
+ .presetHint {
+   color: blue;
+ }
+
