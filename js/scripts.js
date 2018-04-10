@@ -24,6 +24,13 @@ Board.prototype.fillBoard = function(num, row, col) {
   this.history.push([row, col]);
 }
 
+Board.prototype.emptyCell = function(num, row, col) {
+  this.rows[row].pop(num);
+  this.columns[col].pop(num);
+  this.boxes[this.toBoxIndex(row, col)].pop(num);
+  this.history.pop([row, col]);
+}
+
 
 Board.prototype.toBoxIndex = function(row, col) {
   return Math.floor(row / 3) * 3 + Math.floor(col/3);
@@ -147,15 +154,24 @@ $(document).ready(function(){
 
 
 
-  $("#table input").keyup(function(e) {
+  $("table input").keyup(function(e) {
     var $target = $(e.target);
-    var userInput = parseInt($target.val());
+    var userInput = $target.val();
+
+    if(e.keyCode == 8) {
+      console.log("hello");
+      board.emptyCell($target.val() , $target.data("row"), $target.data("col"));
+      console.log(board);
+      return;
+    }
 
     if (!board.validation(userInput)){
-      alert("Input is out of range");
-      $target.val("");
-      return;
-    };
+       alert("Input is out of range");
+       $target.val("");
+       return;
+     };
+
+    userInput = parseInt(userInput);
     console.log($target.data("col"));
     console.log($target.data("row"));
     console.log(userInput);
@@ -163,13 +179,13 @@ $(document).ready(function(){
     console.log(check);
     if (check) {
       board.fillBoard(userInput , $target.data("row"), $target.data("col"));
-      $("input#" + $target.data("col") + $target.data("row")).prop('disabled', true);
+      $("input#" + $target.data("col") + $target.data("row")).prop('disabled', false);
     } else {
       $target.val("");
     }
     console.log(board);
-  });
 
+  });
 
 
   $("#showhint").click(function(event){
