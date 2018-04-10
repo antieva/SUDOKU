@@ -1,32 +1,93 @@
-input.preset {
+input {
   height: 50px;
   width: 50px;
   font-weight: solid;
   font-size: 24px;
   text-align: center;
-}
+  border-width: 1px;
 
+}
 button{
-  min-width: 160px;
-  max-width: 160px;
-}
+  min-width: 165px;
+  max-width: 165px;
 
-input {
-  height: 50px;
-  width: 50px;
+}
+.preset {
   font-weight: bold;
-  font-size: 24px;
-  text-align: center;
   color: orange;
+
+}
+.square {
+  color: black;
+
+}
+body {
+  background-repeat: no-repeat;
+   margin: 50px;
+
+ }
+
+/*.square:hover{
+  background-color: green;
+}*/
+
+/*.box1 {
+  background-color: yellow;
+}*/
+
+#title {
+  font-size: 95px;
+  font-family: Jazz LET, fantasy;
+  font-weight: bold;
+
+}
+.bottom-border {
+border-bottom:2pt solid black;
+
+}
+.right-border {
+border-right:2pt solid black;
+
 }
 
-body{
-  background-repeat: no-repeat;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
- }
+table {
+  overflow: hidden;
+}
+
+
+td, tr {
+  padding: 1px;
+  position: relative;
+  outline: 0;
+}
+
+body:not(.nohover) tbody tr:hover {
+  background-color: red;
+}
+
+td:hover::after,
+thead tr:not(:empty):hover::after,
+td:focus::after,
+thead tr:not(:empty):focus::after {
+  content: '';
+  height: 10000px;
+  left: 0;
+  position: absolute;
+  top: -5000px;
+  width: 100%;
+  z-index: -1;
+}
+
+td:hover::after,
+tr:hover::after {
+  background-color: red;
+}
+
+td:focus::after,
+tr:focus::after {
+  background-color: lightblue;
+}
+
 
  .preset {
    color: black;
@@ -35,3 +96,4 @@ body{
  .presetHint {
    color: blue;
  }
+
