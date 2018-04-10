@@ -13,12 +13,15 @@ Board.prototype.getSet = function(num, row, col) {
   if (this.rows[row].includes(num) || this.columns[col].includes(num) || this.boxes[this.toBoxIndex(row, col)].includes(num)) {
     return false;
   } else {
+    return true;
+  }
+};
+
+Board.prototype.fillBoard = function(num, row, col) {
   this.rows[row].push(num);
   this.columns[col].push(num);
   this.boxes[this.toBoxIndex(row, col)].push(num);
   this.history.push([row, col]);
-}
-  return true;
 }
 
 
@@ -49,7 +52,29 @@ Board.prototype.generate = function(level) {
     if(!$("input#" + col + row).val()){
       if(this.getSet(num, row, col)) {
         set++;
-        $("input#" + col + row).val(num).prop('disabled', true);
+        this.fillBoard(num, row, col);
+        $("input#" + col + row).val(num).prop('disabled', true).addClass('preset');
+      }
+    }
+  }
+}
+
+// This function generate random hint, which might be wrong.
+Board.prototype.generateHint = function() {
+  var set = 0;
+  var col = 0;
+  var row = 0;
+  var num = 0;
+  while (set < 1) {
+    col = Math.floor(Math.random() * 8);
+    row = Math.floor(Math.random() * 8);
+    num = Math.floor(Math.random() * 9 + 1);
+
+    if(!$("input#" + col + row).val()){
+      if(this.getSet(num, row, col)) {
+        set++;
+        this.fillBoard(num, row, col);
+        $("input#" + col + row).val(num).prop('disabled', true).addClass('presetHint');
       }
     }
   }
@@ -60,11 +85,12 @@ function restart(){
   timer();
 }
 
+
+var reset;
 function timer() {
 var time = 0;
 var minutes = 0;
-clearInterval(time);
-setInterval(function(){
+reset = setInterval(function(){
   time = time + 1;
   if (time == 60){
     time = 0;
@@ -77,9 +103,9 @@ Board.prototype.refresh = function() {
   for(var i = 0; i < 9; i++) {
     for(var j = 0; j < 9; j++){
       this.rows.pop();
-      $("input#" + j + i).val("").prop( "disabled", false);
+      $("input#" + j + i).val("").prop( "disabled", false).removeClass('preset');
     }
-  }
+  } clearInterval(reset);
 };
 
 
@@ -93,6 +119,7 @@ $(document).ready(function(){
     board.refresh();
     board = new Board();
     board.generate(35);
+    console.log(board);
     timer();
   })
   $("#medium").click(function(event){
@@ -109,6 +136,7 @@ $(document).ready(function(){
     board.refresh();
     board = new Board();
     board.generate(28);
+    console.log(board);
     timer();
   })
 
@@ -117,20 +145,36 @@ $(document).ready(function(){
     board.refresh();
   })
 
-  console.log(board);
 
-  /* $("input#" + $target.data("col") + $target.data("row")).val("hey")*/
+
   $("#table input").keyup(function(e) {
     var $target = $(e.target);
-    var userInput = $target.val();
+    var userInput = parseInt($target.val());
 
     if (!board.validation(userInput)){
       alert("Input is out of range");
-    }
+      $target.val("");
+      return;
+    };
     console.log($target.data("col"));
-    if (!board.getSet(userInput, $target.data("row"), $target.data("col"))) {
+    console.log($target.data("row"));
+    console.log(userInput);
+    var check = board.getSet(userInput, $target.data("row"), $target.data("col"));
+    console.log(check);
+    if (check) {
+      board.fillBoard(userInput , $target.data("row"), $target.data("col"));
+      $("input#" + $target.data("col") + $target.data("row")).prop('disabled', true);
+    } else {
       $target.val("");
     }
+    console.log(board);
+  });
+
+
+
+  $("#showhint").click(function(event){
+    event.preventDefault();
+    board.generateHint();
     console.log(board);
   });
 
