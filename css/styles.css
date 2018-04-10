@@ -23,17 +23,13 @@ button{
 }
 body {
   background-repeat: no-repeat;
-   /*-webkit-background-size: cover;
-   -moz-background-size: cover;*/
-   /*-o-background-size: cover;*/
-   /*background-size: cover;*/
    margin: 50px;
 
  }
+.tr:hover{
+  background-color: green;
+}
 
-.square:hover {
-   background: green;
- }
 
 #title {
   font-size: 95px;
@@ -48,6 +44,40 @@ border-bottom:2pt solid black;
 .right-border {
 border-right:2pt solid black;
 
-/*table {
-  border-collapse: unset;
-}*/
+}
+table {
+  overflow: hidden;
+}
+
+td, tr {
+  padding: 1px;
+  position: relative;
+  outline: 0;
+}
+
+body:not(.nohover) tbody tr:hover {
+  background-color: red;
+}
+
+td:hover::after,
+thead tr:not(:empty):hover::after,
+td:focus::after,
+thead tr:not(:empty):focus::after {
+  content: '';
+  height: 10000px;
+  left: 0;
+  position: absolute;
+  top: -5000px;
+  width: 100%;
+  z-index: -1;
+}
+
+td:hover::after,
+tr:hover::after {
+  background-color: red;
+}
+
+td:focus::after,
+tr:focus::after {
+  background-color: lightblue;
+}
