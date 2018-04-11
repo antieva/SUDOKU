@@ -21,14 +21,14 @@ Board.prototype.fillBoard = function(num, row, col) {
   this.rows[row].push(num);
   this.columns[col].push(num);
   this.boxes[this.toBoxIndex(row, col)].push(num);
-  this.history.push([row, col]);
+  this.history.push([num,row, col]);
 }
 
 Board.prototype.emptyCell = function(num, row, col) {
   this.rows[row].pop(num);
   this.columns[col].pop(num);
   this.boxes[this.toBoxIndex(row, col)].pop(num);
-  this.history.pop([row, col]);
+  this.history.pop([num,row, col]);
 }
 
 
@@ -52,8 +52,8 @@ Board.prototype.generate = function(level) {
   var row = 0;
   var num = 0;
   while (set < level) {
-    col = Math.floor(Math.random() * 8);
-    row = Math.floor(Math.random() * 8);
+    col = Math.floor(Math.random() * 9);
+    row = Math.floor(Math.random() * 9);
     num = Math.floor(Math.random() * 9 + 1);
 
     if(!$("input#" + col + row).val()){
@@ -73,8 +73,8 @@ Board.prototype.generateHint = function() {
   var row = 0;
   var num = 0;
   while (set < 1) {
-    col = Math.floor(Math.random() * 8);
-    row = Math.floor(Math.random() * 8);
+    col = Math.floor(Math.random() * 9);
+    row = Math.floor(Math.random() * 9);
     num = Math.floor(Math.random() * 9 + 1);
 
     if(!$("input#" + col + row).val()){
@@ -115,11 +115,39 @@ Board.prototype.refresh = function() {
   } clearInterval(reset);
 };
 
+function solver(depth, board) {
+  console.log(depth);
+  if (depth == 81){
+    return true;
+  }
+  var row = Math.floor(depth / 9);
+  var col = depth % 9;
+  for (var i = 1; i < 10; i++) {
+    if (!board.getSet(i, row, col)) {
+      continue;
+    }
+    board.fillBoard(i, row, col);
+    if (solver((depth + 1), board)) {
+      return true;
+    }
+    board.emptyCell(i, row, col)
+  }
+  return false;
+}
+
+
 
 // UI logic.
 
 $(document).ready(function(){
   var board = new Board();
+
+  console.log(solver(0, board));
+  console.log(board);
+  board.history.forEach(function(arr){
+    console.log(arr[2]);
+    $("input#" + arr[2] + arr[1]).val(arr[0]);
+  });
 
   $("#easy").click(function(event){
     event.preventDefault();
