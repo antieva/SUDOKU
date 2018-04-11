@@ -87,21 +87,25 @@ function restart(){
 
 var reset;
 function timer() {
-var time = 0;
+var digit = 0;
+var decimal = 0;
 var minutes = 0;
 reset = setInterval(function(){
-  time = time + 1;
-  if (time == 60){
-    time = 0;
-    minutes = minutes + 1
-  }
-$("#time").text(minutes+":"+time);}, 1000)
-}
+ digit = digit + 1;
+ if (digit == 10){
+   digit = 0;
+   decimal = decimal + 1
+ }
+ if (decimal == 6){
+   decimal = 0;
+   minutes = minutes + 1;
+ }
+$("#time").text(minutes+":"+decimal+digit);}, 1000);
+};
 
-Board.prototype.refresh = function() {
+function refresh() {
   for(var i = 0; i < 9; i++) {
     for(var j = 0; j < 9; j++){
-      this.rows.pop();
       $("input#" + j + i).val("").prop( "disabled", false).removeClass('preset');
     }
   } clearInterval(reset);
@@ -160,6 +164,9 @@ $(document).ready(function(){
     event.preventDefault();
     //board.refresh();
     //newBoard.refresh();
+    board = new Board();
+    newBoard = new Board();
+    refresh();
     console.log(board.solver(0));
     console.log(board);
     console.log(board.history.length);
@@ -172,6 +179,9 @@ $(document).ready(function(){
     //console.log(board);
     //board.refresh();
     //newBoard.refresh();
+    board = new Board();
+    newBoard = new Board();
+    refresh();
     console.log(board.solver(0));
     console.log(board);
     console.log(board.history.length);
@@ -183,6 +193,9 @@ $(document).ready(function(){
     event.preventDefault();
     // board.refresh();
     // newBoard.refresh();
+    board = new Board();
+    newBoard = new Board();
+    refresh();
     console.log(board.solver(0));
     console.log(board);
     console.log(board.history.length);
@@ -193,8 +206,13 @@ $(document).ready(function(){
 
   $("#restart").click(function(event) {
     event.preventDefault();
-    board.refresh();
-    newBoard.refresh();
+    //board.refresh();
+    //newBoard.refresh();
+    board = new Board();
+    newBoard = new Board();
+    console.log(newBoard);
+    refresh();
+
   })
 
 
@@ -206,8 +224,8 @@ $(document).ready(function(){
 
     if(e.keyCode == 8) {
       console.log("hello");
-      board.emptyCell($target.val() , $target.data("row"), $target.data("col"));
-      console.log(board);
+      newBoard.emptyCell($target.val() , $target.data("row"), $target.data("col"));
+      console.log(newBoard);
       return;
     }
 
@@ -221,23 +239,23 @@ $(document).ready(function(){
     console.log($target.data("col"));
     console.log($target.data("row"));
     console.log(userInput);
-    var check = board.getSet(userInput, $target.data("row"), $target.data("col"));
+    var check = newBoard.getSet(userInput, $target.data("row"), $target.data("col"));
     console.log(check);
     if (check) {
-      board.fillBoard(userInput , $target.data("row"), $target.data("col"));
+      newBoard.fillBoard(userInput , $target.data("row"), $target.data("col"));
       $("input#" + $target.data("col") + $target.data("row")).prop('disabled', false);
     } else {
       $target.val("");
     }
-    console.log(board);
+    console.log(newBoard);
 
   });
 
 
   $("#showhint").click(function(event){
     event.preventDefault();
-    board.generateHint();
-    console.log(board);
+    //board.generateHint();
+    //console.log(board);
   });
 
 

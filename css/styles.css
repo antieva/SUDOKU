@@ -1,44 +1,29 @@
 input {
-  height: 50px;
-  width: 50px;
-  font-weight: solid;
-  font-size: 24px;
-  text-align: center;
-  border-width: 1px;
+ height: 50px;
+ width: 50px;
+ font-size: 24px;
+ text-align: center;
+ border-width: 1px;
+ font-weight: bold;
+ color: orange;
 
 }
 button{
-  min-width: 165px;
-  max-width: 165px;
+ min-width: 165px;
+ max-width: 165px;
 
 }
-.preset {
-  font-weight: bold;
-  color: orange;
 
-}
-.square {
-  color: black;
-
-}
 body {
-  background-repeat: no-repeat;
-   margin: 50px;
+ background-repeat: no-repeat;
+  margin: 50px;
 
- }
-
-/*.square:hover{
-  background-color: green;
-}*/
-
-/*.box1 {
-  background-color: yellow;
-}*/
+}
 
 #title {
-  font-size: 95px;
-  font-family: Jazz LET, fantasy;
-  font-weight: bold;
+ font-size: 95px;
+ font-family: Jazz LET, fantasy;
+ font-weight: bold;
 
 }
 .bottom-border {
@@ -51,49 +36,54 @@ border-right:2pt solid black;
 }
 
 table {
-  overflow: hidden;
+ overflow: hidden;
 }
 
 
 td, tr {
-  padding: 1px;
-  position: relative;
-  outline: 0;
+ padding: 1px;
+ position: relative;
+ outline: 0;
 }
 
 body:not(.nohover) tbody tr:hover {
-  background-color: red;
+ background-color: red;
 }
 
 td:hover::after,
 thead tr:not(:empty):hover::after,
 td:focus::after,
 thead tr:not(:empty):focus::after {
-  content: '';
-  height: 10000px;
-  left: 0;
-  position: absolute;
-  top: -5000px;
-  width: 100%;
-  z-index: -1;
+ content: '';
+ height: 10000px;
+ left: 0;
+ position: absolute;
+ top: -5000px;
+ width: 100%;
+ z-index: -1;
 }
 
 td:hover::after,
 tr:hover::after {
-  background-color: red;
+ background-color: red;
 }
 
 td:focus::after,
 tr:focus::after {
-  background-color: lightblue;
+ background-color: lightblue;
+}
+.box1, .box3, .box5, .box7, .box9 {
+ background-color: #ecf0f1;
 }
 
+.preset {
+  color: black;
+  font-weight: bold;
 
- .preset {
-   color: black;
- }
+}
 
- .presetHint {
-   color: blue;
- }
+.presetHint {
+  color: blue;
+  font-weight: bold;
 
+}
