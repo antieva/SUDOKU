@@ -72,7 +72,7 @@ function generateHint(board, newBoard) {
   while (set < 1) {
     col = Math.floor(Math.random() * 9);
     row = Math.floor(Math.random() * 9);
-    if(!$("input#" + col + row).hasClass('preset') || newBoard.rows[row][col] == 0){
+    if(!$("input#" + col + row).hasClass('preset') && $("input#" + col + row).val() != board.rows[row][col] || newBoard.rows[row][col] == 0){
       set++;
       newBoard.fillBoard(board.rows[row][col], row, col);
       $("input#" + col + row).val(board.rows[row][col]).prop('disabled', true).addClass('presetHint');
