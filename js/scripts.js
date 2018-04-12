@@ -72,14 +72,10 @@ function generateHint(board, newBoard) {
   while (set < 1) {
     col = Math.floor(Math.random() * 9);
     row = Math.floor(Math.random() * 9);
-
-    if(newBoard.rows[row][col] == 0){
-      console.log(board.rows[row][col]);
-      if(newBoard.getSet(board.rows[row][col], row, col)) {
-        set++;
-        newBoard.fillBoard(board.rows[row][col], row, col);
-        $("input#" + col + row).val(board.rows[row][col]).prop('disabled', true).addClass('presetHint');
-      }
+    if(!$("input#" + col + row).hasClass('preset') || newBoard.rows[row][col] == 0){
+      set++;
+      newBoard.fillBoard(board.rows[row][col], row, col);
+      $("input#" + col + row).val(board.rows[row][col]).prop('disabled', true).addClass('presetHint');
     }
   }
 }
