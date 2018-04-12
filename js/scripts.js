@@ -69,7 +69,6 @@ function generateHint(board, newBoard) {
   var set = 0;
   var col = 0;
   var row = 0;
-  var num = 0;
   while (set < 1) {
     col = Math.floor(Math.random() * 8);
     row = Math.floor(Math.random() * 8);
@@ -139,7 +138,7 @@ function solver(depth, board) {
       continue;
     }
     board.fillBoard(arr[i], row, col);
-    console.log(board);
+    //console.log(board);
     if (solver((depth + 1), board)) {
       return true;
     }
@@ -155,6 +154,7 @@ function solver(depth, board) {
 $(document).ready(function(){
   var board = new Board();
   var newBoard = new Board();
+  solver(0, board);
 
   //newBoard.history.forEach(function(arr){
     //$("input#" + arr[2] + arr[1]).val(arr[0]).prop('disabled', true).removeClass('presetHint').addClass('preset');
@@ -180,7 +180,7 @@ $(document).ready(function(){
     board = new Board();
     newBoard = new Board();
     refresh();
-    console.log(board.solver(0));
+    solver(0, board);
     console.log(board);
     console.log(board.history.length);
     generate(31, board, newBoard);
@@ -192,7 +192,7 @@ $(document).ready(function(){
     board = new Board();
     newBoard = new Board();
     refresh();
-    console.log(board.solver(0));
+    solver(0, board);
     console.log(board);
     console.log(board.history.length);
     generate(28, board, newBoard);
@@ -210,7 +210,6 @@ $(document).ready(function(){
 
   $("#solution").click(function(event) {
     event.preventDefault();
-    console.log("hey");
     showSolution(board, newBoard);
   });
 
