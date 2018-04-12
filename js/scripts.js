@@ -2,7 +2,7 @@
 
 // Constractor of Map objects (to map the board).
 function Board() {
-  this.rows = [[], [], [], [], [], [], [], [], []];
+  this.rows = [[0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0]];
   this.columns = [[], [], [], [], [], [], [], [], []];
   this.boxes = [[], [], [], [], [], [], [], [], []];
   this.history = [];
@@ -18,14 +18,14 @@ Board.prototype.getSet = function(num, row, col) {
 };
 
 Board.prototype.fillBoard = function(num, row, col) {
-  this.rows[row].push(num);
+  this.rows[row][col] = num;
   this.columns[col].push(num);
   this.boxes[this.toBoxIndex(row, col)].push(num);
   this.history.push([num, row, col]);
 }
 
 Board.prototype.emptyCell = function(num, row, col) {
-  this.rows[row].pop(num);
+  this.rows[row][col] = 0;
   this.columns[col].pop(num);
   this.boxes[this.toBoxIndex(row, col)].pop(num);
   this.history.pop([num, row, col]);
@@ -56,10 +56,18 @@ function generate(level, board, newBoard) {
   }
 }
 
+function showSolution(board, newBoard) {
+  console.log(board.history.length);
+  board.history = shuffle(board.history);
+  for (var i = 0; i < board.history.length; i++) {
+      newBoard.fillBoard(board.history[i][0], board.history[i][1], board.history[i][2]);
+      $("input#" + board.history[i][2] + board.history[i][1]).val(board.history[i][0]).prop('disabled', true).removeClass('presetHint');
+  }
+}
 
 
 // This function generate random hint, which might be wrong.
-Board.prototype.generateHint = function() {
+function generateHint(board, newBoard) {
   var set = 0;
   var col = 0;
   var row = 0;
@@ -67,13 +75,13 @@ Board.prototype.generateHint = function() {
   while (set < 1) {
     col = Math.floor(Math.random() * 8);
     row = Math.floor(Math.random() * 8);
-    num = Math.floor(Math.random() * 9 + 1);
 
-    if(!$("input#" + col + row).val()){
-      if(this.getSet(num, row, col)) {
+    if(newBoard.rows[row][col] == 0){
+      console.log(board.rows[row][col]);
+      if(newBoard.getSet(board.rows[row][col], row, col)) {
         set++;
-        this.fillBoard(num, row, col);
-        $("input#" + col + row).val(num).prop('disabled', true).addClass('presetHint');
+        newBoard.fillBoard(board.rows[row][col], row, col);
+        $("input#" + col + row).val(board.rows[row][col]).prop('disabled', true).addClass('presetHint');
       }
     }
   }
@@ -119,8 +127,8 @@ function shuffle(a) {
     return a;
 }
 
-
-Board.prototype.solver = function(depth) {
+// Function is filling an empty board.
+function solver(depth, board) {
   if (depth == 81) {
     return true;
   }
@@ -129,18 +137,18 @@ Board.prototype.solver = function(depth) {
   var arr = [1,2,3,4,5,6,7,8,9];
   arr = shuffle(arr);
   for (var i = 1; i < 9; i++) {
-    if (!this.getSet(arr[i], row, col)) {
+    if (!board.getSet(arr[i], row, col)) {
       continue;
     }
-    this.fillBoard(arr[i], row, col);
-    if (this.solver(depth + 1)) {
+    board.fillBoard(arr[i], row, col);
+    console.log(board);
+    if (solver((depth + 1), board)) {
       return true;
     }
-    this.emptyCell(arr[i], row, col);
+    board.emptyCell(arr[i], row, col);
   }
   return false;
 }
-
 
 
 
@@ -150,25 +158,20 @@ $(document).ready(function(){
   var board = new Board();
   var newBoard = new Board();
 
-  //console.log(board.solver(0));
-  //console.log(board);
-  //board.generate(35, newBoard);
-  //console.log(newBoard);
-  //board.history.forEach(function(arr){
-  //  $("input#" + arr[2] + arr[1]).val(arr[0])
-  //})
+  //newBoard.history.forEach(function(arr){
+    //$("input#" + arr[2] + arr[1]).val(arr[0]).prop('disabled', true).removeClass('presetHint').addClass('preset');
+  //});
+
 
 
 
   $("#easy").click(function(event){
     event.preventDefault();
-    //board.refresh();
-    //newBoard.refresh();
     board = new Board();
     newBoard = new Board();
     refresh();
-    console.log(board.solver(0));
-    console.log(board);
+    solver(0, board);
+
     console.log(board.history.length);
     generate(35, board, newBoard);
     console.log(newBoard);
@@ -176,9 +179,6 @@ $(document).ready(function(){
   })
   $("#medium").click(function(event){
     event.preventDefault();
-    //console.log(board);
-    //board.refresh();
-    //newBoard.refresh();
     board = new Board();
     newBoard = new Board();
     refresh();
@@ -191,8 +191,6 @@ $(document).ready(function(){
   })
   $("#hard").click(function(event){
     event.preventDefault();
-    // board.refresh();
-    // newBoard.refresh();
     board = new Board();
     newBoard = new Board();
     refresh();
@@ -206,14 +204,20 @@ $(document).ready(function(){
 
   $("#restart").click(function(event) {
     event.preventDefault();
-    //board.refresh();
-    //newBoard.refresh();
     board = new Board();
     newBoard = new Board();
     console.log(newBoard);
     refresh();
+  });
 
-  })
+  $("#solution").click(function(event) {
+    event.preventDefault();
+    console.log("hey");
+    showSolution(board, newBoard);
+  });
+
+
+
 
 
 
@@ -254,8 +258,7 @@ $(document).ready(function(){
 
   $("#showhint").click(function(event){
     event.preventDefault();
-    //board.generateHint();
-    //console.log(board);
+    generateHint(board, newBoard);
   });
 
 

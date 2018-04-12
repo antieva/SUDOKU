@@ -87,3 +87,10 @@ tr:focus::after {
   font-weight: bold;
 
 }
+
+#time {
+ text-align: center;
+ border-style: ridge;
+ width: 165px;
+ height: 46px;
+}
