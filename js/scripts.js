@@ -65,8 +65,6 @@ function showSolution(board, newBoard) {
   }
 }
 
-
-// This function generate random hint, which might be wrong.
 function generateHint(board, newBoard) {
   var set = 0;
   var col = 0;
