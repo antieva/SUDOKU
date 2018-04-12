@@ -70,8 +70,8 @@ function generateHint(board, newBoard) {
   var col = 0;
   var row = 0;
   while (set < 1) {
-    col = Math.floor(Math.random() * 8);
-    row = Math.floor(Math.random() * 8);
+    col = Math.floor(Math.random() * 9);
+    row = Math.floor(Math.random() * 9);
 
     if(newBoard.rows[row][col] == 0){
       console.log(board.rows[row][col]);
