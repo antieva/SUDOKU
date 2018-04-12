@@ -143,6 +143,12 @@ function solver(depth, board) {
   return false;
 }
 
+function gameOver(board) {
+  if (board.history.length == 81) {
+    console.log("Hello");
+    clearInterval(reset);
+  }
+}
 
 
 // UI logic.
@@ -170,6 +176,7 @@ $(document).ready(function(){
     generate(35, board, newBoard);
     console.log(newBoard);
     timer();
+
   })
   $("#medium").click(function(event){
     event.preventDefault();
@@ -208,13 +215,9 @@ $(document).ready(function(){
   $("#solution").click(function(event) {
     event.preventDefault();
     showSolution(board, newBoard);
+    console.log(newBoard);
+    clearInterval(reset);
   });
-
-
-
-
-
-
 
   $("table input").keyup(function(e) {
     var $target = $(e.target);
@@ -246,13 +249,15 @@ $(document).ready(function(){
       $target.val("");
     }
     console.log(newBoard);
-
+    gameOver(newBoard);
   });
+
 
 
   $("#showhint").click(function(event){
     event.preventDefault();
     generateHint(board, newBoard);
+    gameOver(newBoard);
   });
 
 
