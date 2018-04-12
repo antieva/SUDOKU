@@ -205,6 +205,7 @@ $(document).ready(function(){
     board = new Board();
     newBoard = new Board();
     console.log(newBoard);
+    solver(0, board);
     refresh();
   });
 

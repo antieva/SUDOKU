@@ -2,7 +2,7 @@
 
 #### _A webpage with classic Sudoku game. The user can solve the puzzle by entering numbers from 1 to 9 into 9 by 9 board boxes._
 
-#### By _****_
+#### By _Eva Antipina, Noah Medoff, Eric Nicolas, Verna Santos_
 
 ## Description
 
@@ -46,11 +46,11 @@ _To solve, the user has to place a number into each blank box so that each row a
 
 ## Known Bugs
 
-_None_
+_If the user hits Hint button too fast it crashes._
 
 ## Support and contact details
 
-_If You run into any issues or have questions, ideas, concerns or would like to make a contribution to the code, please contact any of the contributors via email: eva.antipina@gmail.com.}_
+_If You run into any issues or have questions, ideas, concerns or would like to make a contribution to the code, please contact any of the contributors via email: eva.antipina@gmail.com, eric.e.nicolas@gmail.com, vernajs@gmail.com, nmedoff123@gmail.com}_
 
 ## Technologies Used
 
@@ -64,4 +64,4 @@ _If You run into any issues or have questions, ideas, concerns or would like to 
 
 _Not licensed_
 
-Copyright (c) 2018 **__**
+Copyright (c) 2018 **_Eva Antipina, Eric Nicolas, Verna Santos, Noah Medoff_**
